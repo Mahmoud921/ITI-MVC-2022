@@ -1,0 +1,20 @@
+﻿@model List<Department>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<table class="table">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Manger Name</th>
+        </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+        <td>@item.Name</td>
+        <td>@item.ManagerName</td>
+        </tr>
+    }
+
+</table>
+
