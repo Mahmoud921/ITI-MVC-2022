@@ -7,6 +7,7 @@ namespace App.Controllers
     public class DepartmentController : Controller
     {
         AppDbContext _context = new AppDbContext();
+
         public IActionResult Index()
         {
             List<Department> department= _context.Departments.Include(d => d.Employees).ToList();
@@ -28,7 +29,7 @@ namespace App.Controllers
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View("New");
+            return View("New",dept);
         }
     }
 }

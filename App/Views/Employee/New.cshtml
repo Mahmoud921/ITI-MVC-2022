@@ -1,0 +1,50 @@
+﻿@model Employee
+@{
+    ViewData["Title"] = "New";
+}
+
+<h1 style="text-align:center">Add New Employee</h1>
+
+
+
+<form asp-controller="Employee" asp-action="SaveNew" class= " form m-2">
+    <div>
+        <label>Name</label>
+        <input asp-for="Name" class=" form-control" />
+    </div>
+    <div>
+        <label>Email</label>
+        <input asp-for="Email" class=" form-control" />
+    </div>
+    <div>
+        <label>Salary</label>
+        <input asp-for="Salary" class=" form-control" />
+    </div>
+    <div>
+        <label>Address</label>
+        <input asp-for="Address" class=" form-control" />
+    </div>
+    <div>
+        <label>Image</label>
+        <input asp-for="Image" class=" form-control" />
+    </div>
+
+    <div>
+        <label>Department</label>
+        <select asp-for="DeptId" class="form form-control">
+            @foreach (Department dept in ViewBag.deptList)
+            {
+                    <option value="@dept.Id">@dept.Name</option>
+            }
+
+        </select>
+    </div>
+    <input type="submit" value="Save" class="btn btn-success m-2" />
+    <a href="/Employee" class="btn btn-dark m-2">Back</a>
+</form>
+
+
+
+
+
+

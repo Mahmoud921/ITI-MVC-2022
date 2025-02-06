@@ -1,0 +1,35 @@
+﻿@model List<Employee>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2 style="text-align:center">Employee</h2>
+
+<a asp-controller="Employee" asp-action="New" class="btn btn-info m-2">Add</a>
+<br />
+<table class="table table-bordered">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Address</th>
+            <th>Action</th>
+        </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+        <td>@item.Name</td>
+        <td>@item.Email</td>
+        <td>@item.Salary</td>
+        <td>@item.Address</td>
+        <td>
+            <a asp-controller="Employee" asp-action="Edit" asp-route-id ="@item.Id" class="btn btn-light">Edit</a>
+
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+
