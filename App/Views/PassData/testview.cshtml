@@ -1,9 +1,13 @@
 ﻿@model ExtraInfoEmpAndDeptViewModel
 @{
     ViewData["Title"] = "testview";
+     Layout = "_MyLayout";
 }
 
 
 
 <h4>@Model.Age</h4>
 <h4>@Model.Message</h4>
+@section MenuSection{
+    <h6>Hello Render Section</h6>
+}

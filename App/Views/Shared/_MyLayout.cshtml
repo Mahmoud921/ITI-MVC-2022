@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <header style="background-color:#ddd; text-align:center">Header</header>
+    <div style="width:40%;background-color:lightblue ">
+        Menu @RenderSection("MenuSection", false) <!-- to make section optional and not mandatory -->
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+    <footer style ="background-color:#ddd; text-align:center">Footer</footer>
+</body>
+</html>

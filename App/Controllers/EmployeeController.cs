@@ -21,6 +21,7 @@ namespace App.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken] 
         public IActionResult SaveNew(Employee emp)
         {
             if (emp.Name != null)
@@ -32,6 +33,7 @@ namespace App.Controllers
             ViewData["deptList"] = _context.Departments.ToList();
             return View("New",emp);
         }
+
         // Edit Employee
         public IActionResult Edit(int id)
         {

@@ -1,6 +1,7 @@
 ﻿@model Employee
 @{
     ViewData["Title"] = "New";
+    SelectList deptList = new SelectList(ViewBag.deptList,"Id","Name");
 }
 
 <h1 style="text-align:center">Add New Employee</h1>
@@ -31,11 +32,8 @@
 
     <div>
         <label>Department</label>
-        <select asp-for="DeptId" class="form form-control">
-            @foreach (Department dept in ViewBag.deptList)
-            {
-                    <option value="@dept.Id">@dept.Name</option>
-            }
+        <select asp-for="DeptId" asp-items="deptList" class="form form-control">
+           <option vlaue="0">select department</option>
 
         </select>
     </div>
