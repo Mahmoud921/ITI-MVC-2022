@@ -12,6 +12,7 @@
     <div>
         <label>Name</label>
         <input asp-for="Name" class=" form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
     </div>
     <div>
         <label>Email</label>
@@ -20,14 +21,17 @@
     <div>
         <label>Salary</label>
         <input asp-for="Salary" class=" form-control" />
+        <span asp-validation-for="Salary" class="text-danger"></span>
     </div>
     <div>
         <label>Address</label>
         <input asp-for="Address" class=" form-control" />
+        <span asp-validation-for="Address" class="text-danger"></span>
     </div>
     <div>
         <label>Image</label>
         <input asp-for="Image" class=" form-control" />
+        <span asp-validation-for="Image" class="text-danger"></span>
     </div>
 
     <div>
@@ -36,6 +40,7 @@
            <option vlaue="0">select department</option>
 
         </select>
+        <span asp-validation-for="DeptId" class="text-danger"></span>
     </div>
     <input type="submit" value="Save" class="btn btn-success m-2" />
     <a href="/Employee" class="btn btn-dark m-2">Back</a>

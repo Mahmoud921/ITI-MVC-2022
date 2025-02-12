@@ -24,7 +24,7 @@ namespace App.Controllers
         [ValidateAntiForgeryToken] 
         public IActionResult SaveNew(Employee emp)
         {
-            if (emp.Name != null)
+            if (ModelState.IsValid)
             {
                 _context.Employees.Add(emp);
                 _context.SaveChanges();
@@ -45,7 +45,7 @@ namespace App.Controllers
         [HttpPost]
         public IActionResult Edit(int id,Employee newEmp)
         {
-            if (newEmp.Name != null)
+            if (ModelState.IsValid) // validation server side
             {
                 var oldEmp = _context.Employees.FirstOrDefault(e => id == e.Id);
                 if (oldEmp != null) {
