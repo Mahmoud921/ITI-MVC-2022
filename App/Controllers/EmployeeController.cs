@@ -26,9 +26,16 @@ namespace App.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Employees.Add(emp);
-                _context.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    _context.Employees.Add(emp);
+                    _context.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch (Exception ex) {
+                    ModelState.AddModelError(String.Empty,ex.Message.ToString());
+                }
+                
             }
             ViewData["deptList"] = _context.Departments.ToList();
             return View("New",emp);

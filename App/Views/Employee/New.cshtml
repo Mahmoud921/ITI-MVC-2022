@@ -9,10 +9,12 @@
 
 
 <form asp-controller="Employee" asp-action="SaveNew" class= " form m-2">
+
+    <div asp-validation-summary="All" class="text-danger"></div>
     <div>
         <label>Name</label>
-        <input asp-for="Name" class=" form-control" />
-        <span asp-validation-for="Name" class="text-danger"></span>
+        <input asp-for="Name" class=" form form-control" />
+        @* <span asp-validation-for="Name" class="text-danger"></span> *@
     </div>
     <div>
         <label>Email</label>
@@ -21,17 +23,17 @@
     <div>
         <label>Salary</label>
         <input asp-for="Salary" class=" form-control" />
-        <span asp-validation-for="Salary" class="text-danger"></span>
+        @* <span asp-validation-for="Salary" class="text-danger"></span> *@
     </div>
     <div>
         <label>Address</label>
         <input asp-for="Address" class=" form-control" />
-        <span asp-validation-for="Address" class="text-danger"></span>
+        @* <span asp-validation-for="Address" class="text-danger"></span> *@
     </div>
     <div>
         <label>Image</label>
         <input asp-for="Image" class=" form-control" />
-        <span asp-validation-for="Image" class="text-danger"></span>
+        @* <span asp-validation-for="Image" class="text-danger"></span> *@
     </div>
 
     <div>
@@ -40,11 +42,15 @@
            <option vlaue="0">select department</option>
 
         </select>
-        <span asp-validation-for="DeptId" class="text-danger"></span>
+        @* <span asp-validation-for="DeptId" class="text-danger"></span> *@
     </div>
     <input type="submit" value="Save" class="btn btn-success m-2" />
     <a href="/Employee" class="btn btn-dark m-2">Back</a>
 </form>
+@section Scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
 
 
 
