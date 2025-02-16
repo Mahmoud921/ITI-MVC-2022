@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
+
 namespace App.Models
 {
     public class Employee
@@ -10,6 +11,7 @@ namespace App.Models
         [Required]
         [MinLength(3)]
         [MaxLength(50)]
+        [UniqueName]
         public string Name { get; set; }
 
         [RegularExpression(@"[a-z]+\.(jpg|png)", ErrorMessage ="Image must be end with png or jpg.")]
