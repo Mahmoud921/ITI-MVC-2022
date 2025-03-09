@@ -1,15 +1,17 @@
 ﻿using App.Models;
+using App.Repository;
 using Microsoft.AspNetCore.Mvc;
 
 namespace App.Controllers
 {
     public class EmployeeController : Controller
     {
-        AppDbContext _context = new AppDbContext();
-
+        //AppDbContext _context = new AppDbContext();
+        EmployeeRepository _empRepo = new EmployeeRepository();
+        DepartmentRepository _deptRepo = new DepartmentRepository();
         public IActionResult Index()
         {
-            var emp = _context.Employees.ToList();
+            var emp =_empRepo.GetAll();
             return View(emp);
         }
 
@@ -17,7 +19,7 @@ namespace App.Controllers
         [HttpGet]
         public IActionResult New()
         {
-            ViewData["deptList"] = _context.Departments.ToList();
+            ViewData["deptList"] = _deptRepo.GetAll();
             return View();
         }
         [HttpPost]
@@ -28,8 +30,7 @@ namespace App.Controllers
             {
                 try
                 {
-                    _context.Employees.Add(emp);
-                    _context.SaveChanges();
+                    _empRepo.Insert(emp);
                     return RedirectToAction("Index");
                 }
                 catch (Exception ex) {
@@ -37,15 +38,15 @@ namespace App.Controllers
                 }
                 
             }
-            ViewData["deptList"] = _context.Departments.ToList();
+            ViewData["deptList"] = _deptRepo.GetAll();
             return View("New",emp);
         }
 
         // Edit Employee
         public IActionResult Edit(int id)
         {
-            var emp = _context.Employees.FirstOrDefault(e => e.Id == id);
-            ViewData["deptList"]= _context.Departments.ToList();
+            var emp = _empRepo.GetById(id);
+            ViewData["deptList"]= _deptRepo.GetAll();
             return View(emp);
         }
 
@@ -54,19 +55,10 @@ namespace App.Controllers
         {
             if (ModelState.IsValid) // validation server side
             {
-                var oldEmp = _context.Employees.FirstOrDefault(e => id == e.Id);
-                if (oldEmp != null) {
-                    oldEmp.Name = newEmp.Name;
-                    oldEmp.Email = newEmp.Email;
-                    oldEmp.Salary = newEmp.Salary;
-                    oldEmp.Address = newEmp.Address;
-                    oldEmp.DeptId = newEmp.DeptId;
-                    _context.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-                
+                _empRepo.Update(id,newEmp);
+                  return RedirectToAction("Index");  
             }
-            ViewData["deptList"] = _context.Departments.ToList();
+            ViewData["deptList"] = _deptRepo.GetAll();
             return View("Edit",newEmp);
         }
     }
