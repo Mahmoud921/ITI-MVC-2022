@@ -7,8 +7,13 @@ namespace App.Controllers
     public class EmployeeController : Controller
     {
         //AppDbContext _context = new AppDbContext();
-        EmployeeRepository _empRepo = new EmployeeRepository();
-        DepartmentRepository _deptRepo = new DepartmentRepository();
+        IEmployeeRepository _empRepo;
+        IDepartmentRepository _deptRepo;
+        public EmployeeController(IEmployeeRepository EmpRepo, IDepartmentRepository DeptRepo)
+        {
+            _empRepo = EmpRepo;
+            _deptRepo = DeptRepo;
+        }
         public IActionResult Index()
         {
             var emp =_empRepo.GetAll();

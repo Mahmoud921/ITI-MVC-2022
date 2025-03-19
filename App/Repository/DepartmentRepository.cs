@@ -3,9 +3,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace App.Repository
 {
-    public class DepartmentRepository
+    public class DepartmentRepository:IDepartmentRepository
     {
-        AppDbContext _context = new AppDbContext();
+        AppDbContext _context;
+        public DepartmentRepository(AppDbContext db)
+        {
+            _context = db;
+        }
         public List<Department> GetAll()
         {
             return _context.Departments.ToList();

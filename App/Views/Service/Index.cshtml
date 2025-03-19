@@ -1,0 +1,10 @@
+﻿@using App.Repository
+@inject IEmployeeRepository EmpRepo
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+<h3>Service Id from controller: @ViewBag.ID</h3>
+<h3>Service Id from View : @EmpRepo.Id</h3>
+

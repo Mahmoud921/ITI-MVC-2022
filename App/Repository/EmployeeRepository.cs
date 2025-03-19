@@ -2,9 +2,19 @@
 
 namespace App.Repository
 {
-    public class EmployeeRepository
+    public class EmployeeRepository : IEmployeeRepository
     {
-        AppDbContext _context = new AppDbContext();
+        AppDbContext _context;
+        public EmployeeRepository( AppDbContext db)
+        {
+            _context = db;
+        }
+
+        public Guid Id { get; set ; }
+        public EmployeeRepository()
+        {
+            Id = Guid.NewGuid();
+        }
 
         public List<Employee> GetAll()
         {

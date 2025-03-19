@@ -9,10 +9,15 @@ namespace App.Controllers
     public class DepartmentController : Controller
     {
         //AppDbContext _context = new AppDbContext();
-        
-        DepartmentRepository _deptRepo = new DepartmentRepository();
-        EmployeeRepository _empRepo = new EmployeeRepository();
 
+        IDepartmentRepository _deptRepo;
+        IEmployeeRepository _empRepo;
+        public DepartmentController(IEmployeeRepository EmpRepo, IDepartmentRepository DeptRepo)
+        {
+            _empRepo = EmpRepo;
+            _deptRepo = DeptRepo;
+
+        }
         public IActionResult Index()
         {
             List<Department> department = _deptRepo.GetAllWithEmp();
