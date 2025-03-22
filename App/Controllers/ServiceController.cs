@@ -1,8 +1,10 @@
-﻿using App.Repository;
+﻿using App.Filters;
+using App.Repository;
 using Microsoft.AspNetCore.Mvc;
 
 namespace App.Controllers
 {
+    // [MyFilter]    filter works on this all controller methods
     public class ServiceController : Controller
     {
         IEmployeeRepository _empRepo;
@@ -15,5 +17,10 @@ namespace App.Controllers
             ViewBag.ID = _empRepo.Id;
             return View();
         }
+        [MyFilter]
+        public IActionResult test() {
+            return Content("Hello");
+        }
+
     }
 }
